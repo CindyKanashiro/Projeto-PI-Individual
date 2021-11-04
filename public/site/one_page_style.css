@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-image: url(../Projeto-PI-Individual/imagens/portal_editado2_borrado.jpg);
+    background-image: url(../imagens/porta_natul_editato_borrado_cortado.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -16,7 +16,9 @@ body {
    height: 100%;
 }
 .banner img {
-    width: 55%;
+    width: 74%;
+    height: 72%;
+    
     
 }
 
