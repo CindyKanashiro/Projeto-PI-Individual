@@ -1,0 +1,25 @@
+html, body {
+    height: 98vh;
+
+}
+
+body {
+    background-image: url(../Projeto-PI-Individual/imagens/portal_editado2_borrado.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner {
+   display: flex; 
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+.banner img {
+    width: 55%;
+    
+}
+
+.container {
+    height: 100%;
+}
