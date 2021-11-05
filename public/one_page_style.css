@@ -3,7 +3,7 @@
 }
 
 .bg-image {
-    background-image: url(../azulao.jpg);
+    background-image: url(../public/assets/azulao.jpg);
     filter: blur(2px);
     height: 99vh;
     background-size: cover;
