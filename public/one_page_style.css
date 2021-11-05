@@ -1,9 +1,20 @@
+* {
+    margin: 0;
+}
 
-
-body {
-    background-image: url(../tianshu-liu.jpg);
+.bg-image {
+    background-image: url(../azulao.jpg);
+    filter: blur(2px);
+    height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    display: flex;
+}
+
+.container {
+    height: 100%;
 }
 
 .banner {
@@ -13,12 +24,14 @@ body {
    height: 100%;
 }
 .banner img {
-    width: 74%;
-    height: 72%;
-    
-    
+    width: 70%;
+    height: 75%; 
+    position: absolute;
+    top: 50%;                        
+   transform: translate(0, -50%)   
 }
 
-.container {
-    height: 100%;
+.banner .titulo_img {
+    width: 30vw;
 }
+
