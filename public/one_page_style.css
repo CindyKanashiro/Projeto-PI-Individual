@@ -1,0 +1,24 @@
+
+
+body {
+    background-image: url(../tianshu-liu.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner {
+   display: flex; 
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+.banner img {
+    width: 74%;
+    height: 72%;
+    
+    
+}
+
+.container {
+    height: 100%;
+}
