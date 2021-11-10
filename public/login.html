@@ -5,36 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../public/login_style.css">
-    <link rel="icon" href="../public/assets/icon/logo.png">
+    <title>Login | Lost in Japan</title>
+    <link rel="stylesheet" href="../public/css/login_style.css">
+    <link rel="icon" href="../public/images/icon/logo.png">
 </head>
+
 <body>
     <div class="bg-image"></div>
     <div class="cadastro">
         <div class="container">
-            <img src="../public/assets/finan-akbar.jpg" alt="">
+            <img src="../public/images/finan-akbar.jpg" alt="">
             <div class="form">
-                <div class="texto">
-                <h1>Login to Lost in Japan</h1>
-                <p>いらっしゃいませ!</p>
-                <br>
-                <p>
-                    <label>E-mail</label>
-                    <br>
-                    <input name="email" type="text">
-                </p>
-                <br>
-                <p>
-                    <label>Senha</label>
-                    <br>
-                    <input name="senha" type="text">
-                </p>
-                <br>
-                    <button><a href="#">Login</a></button>
-                </div>
+                <form id="form_login" method="post" onsubmit="return login()">
+                    <div class="texto">
+                        <h1>Login to Lost in Japan</h1>
+                        <p>いらっしゃいませ!</p>
+                        <br>
+                        <div>
+                            <label>E-mail</label>
+                            <br>
+                            <input name="email" type="text">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Senha</label>
+                            <br>
+                            <input name="senha" type="password">
+                        </div>
+                        <br>
+                        <div class="botao">
+                            <button type="submit">Login</button>
+                        </div>
+                        <div class="footer">
+                            <div class="container">
+                                <h4>Feito com amor por um aluno BandTec &copy; 2021</h4>
+                            </div>
+                        </div>
+                </form>
             </div>
         </div>
     </div>
+    </div>
 </body>
+<script>
+     function limparFormulario() {
+        document.getElementById("form_login").reset();
+    }
+
+</script>
+
 </html>
