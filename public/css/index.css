@@ -23,16 +23,21 @@ section {
 }
 
 div.sombra {
+    
     background-color: white;
-    height: 30vh;
+    height: 48vh;
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 123px;
+    padding-top: 133px;
 }
 
 div.sombra h1 {
-    color: rgb(114, 0, 0);
+    text-transform: uppercase;
+    font-size: 2.2em;
+    line-height: 1em;
+    color: #580202;
+
 }
 
 div.sombra::before {
@@ -43,6 +48,23 @@ div.sombra::before {
     height: 24vh;
     background: linear-gradient(to top,white,transparent);
     z-index: 1000;
+}
+
+div.box_linha {
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
+}
+
+div.linha {
+    width: 90%;
+    height: 12vh;
+    border: solid 2px #580202;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
 }
 
 .container .content {
@@ -71,11 +93,14 @@ div.sombra::before {
 }
 
 div.fake_body {
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: white;
+   /* background-image: url(../images/circulo_peq__1_-removebg-preview\ \(1\).png);*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 0vh;
 }
 
 .container_sec {
@@ -107,7 +132,7 @@ div.fake_body {
 
 .container_sec .card:hover img {
     left: 73%;
-    height: 400px;
+    height: 300px;
 }
 
 .container_sec .card .content {
@@ -153,7 +178,175 @@ div.fake_body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(#580202, #024242);
+    background: linear-gradient(#7c0c0c, #024242);
     border-radius: 6px;
 }
+
+.container_ter {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    margin-top: 5%;
+}
+
+.container_ter .card {
+    position: relative;
+    width: 364px;
+    height: 303px;
+    margin: 18px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(45deg, rgb(110, 18, 18), rgb(5, 68, 77));
+}
+
+.container_ter .card img {
+    position: absolute;
+    bottom: 0;
+    height: 315px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.5s;
+}
+
+.container_ter .card:hover img {
+    left: 73%;
+    height: 300px;
+}
+
+.container_ter .card .content {
+    position: relative;
+    width: 50%;
+    left: 20%;
+    opacity: 0;
+    visibility: hidden;
+    padding: 20px 20px 20px 40px;
+    transition: 0.5s;
+}
+
+.container_ter .card:hover .content {
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.container_ter .card .content h2 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 2.2em;
+    line-height: 1em;
+}
+
+.container_ter .card .content p {
+    color: white;
+}
+
+.container_ter .card .content a {
+    position: relative;
+    color: black;
+    background: white;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+div.sombra_footer {
+    height: 11vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 69px;
+   
+}
+
+/*.sombra_footer::before {
+    content: '';
+    bottom: 0;
+    width: 100%;
+    height: 15vh;
+    background: linear-gradient(to bottom,white,transparent);
+    z-index: 1000;
+}*/
+footer {
+    background-color: #812121;
+    height: auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-top: 40px;
+    color: white;
+    margin-top: 11%;
+}
+
+.footer_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer_content h3 {
+    font-size: 1.8em;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+
+.footer_content p {
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+}
+
+.socials {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+
+.socials li {
+    margin: 0 10px;
+}
+
+.socials a {
+    text-decoration: none;
+    color: white;
+}
+
+.socials a i {
+    font-size:  1.1rem;
+    transition: color .4s ease;
+}
+
+.socials a:hover i {
+    color: rgb(6, 86, 88);
+}
+
+.footer-bottom {
+    background-color: rgb(107, 1, 1);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.footer-bottom span {
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
+
+
+
+  
+
 
