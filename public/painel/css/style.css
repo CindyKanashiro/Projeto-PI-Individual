@@ -110,3 +110,61 @@ table button {
     border-right: 0px;
     border-bottom: 0px;
 }
+
+.formulario {
+    height: 60vh;
+    width: 40vw;
+    background-color: #383838;
+    margin: 25px 25px 0 25px;
+    display: flex;
+}
+
+.formulario .container {
+   color: white;
+   text-transform: uppercase;
+   padding: 10px 25px 25px 50px;
+   display: inline-grid;
+}
+
+input {
+   border-top: 0px;
+   border-left: 0px;
+   border-right: 0px;
+}
+
+ button  {
+   color: white;
+   font-size: 16px;
+   font-weight: 200;
+   letter-spacing: 1px;
+   padding: 13px 20px 13px;
+   outline: 0;
+   border: 1px solid black;
+   cursor: pointer;
+   position: relative;
+   background-color: #440000;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+   
+}
+
+.container_dash {
+    width: 100vw;
+    height: 60vh;
+   margin: 25px 25px 0 0;
+   display: flex;
+}
+
+.container_dash .content {
+    width: 100vw;
+    height: 20vh;
+    background-color: white;
+   justify-content: space-between;
+   margin: 18px;
+   padding: 10px 10px 10px 10px;
+}
+
+.container_dash .content img {
+    width: 50px;
+}

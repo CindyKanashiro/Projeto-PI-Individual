@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de ADM</title>
-    <link rel="stylesheet" href="../painel/css/listagem_usu.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../images/icon/logo.png">
 </head>
 
@@ -20,13 +20,13 @@
     <div class="menu">
         <div class="nav_bar">
             <li>
-                <a href="../painel/home_painel.html">Home</a>
+                <a href="home_painel.html">Home</a>
             </li>
             <li>
-                <a href="../painel/listagem_usu.html">Administrador</a>
+                <a href="listagem_usu.html">Administrador</a>
             </li>
             <li>
-                <a href="../painel/lista_lendas.html">Lendas</a>
+                <a href="lista_lendas.html">Lendas</a>
             </li>
         </div>
     </div>
@@ -34,35 +34,50 @@
         <h2>Lista de administradores</h2>
     </div>
     <div>
-        <button class="botao"> <a href="../painel/painel_cadastro.html">Novo Cadastro</a></button>
+        <button class="botao"> <a href="painel_cadastro.html">Novo Cadastro</a></button>
     </div>
     <div class="formulario">
-        <form class="form_cadastro">
-            <div class="container">
-                <table>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>View</th>
-                        <th>Ações</th>
-                    </tr>
-                    <tr>
-                        <td>Marcio</td>
-                        <td>marco@gmail.com</td>
-                        <td>12</td>
-                        <td><button>Editar</button><button>Excluir</button></td>
-                    </tr>
-                    <tr>
-                        <td>Patricia</td>
-                        <td>pati@gmail.com</td>
-                        <td>34</td>
-                        <td><button>Editar</button><button>Excluir</button></td>
-                    </tr>
-                </table>
-            </div>
-        </form>
+        <div class="container">
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>View</th>
+                    <th>Ações</th>
+                </tr>
+                <tbody id="listagem"></tbody>
+            </table>
+        </div>
     </div>
 
-</body>
+    <script>
+        fetch("http://localhost:3333/usuarios", {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then(json => {
+                listar_usu(json)
+                });
 
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        function listar_usu(usuarios) {
+            let tbody = '';
+
+            usuarios.forEach(function(usuario) {
+                tbody = `
+                    <tr>
+                        <td>${usuario.nome_usuario}</td>
+                        <td>${usuario.email_usuario}</td>
+                        <td>1</td>
+                        <td><button>Editar</button><button>Excluir</button></td>
+                    </tr>
+                `;
+            });
+
+            listagem.innerHTML = tbody;
+        }
+    </script>
+</body>
 </html>
