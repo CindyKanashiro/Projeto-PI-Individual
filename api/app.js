@@ -10,6 +10,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
+var lendasRouter = require("./src/routes/lendas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,6 +20,7 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/lendas", lendasRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do site está rodando rodando: http://localhost:${PORTA} \n

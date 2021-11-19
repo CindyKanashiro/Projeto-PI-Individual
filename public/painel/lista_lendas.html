@@ -36,32 +36,49 @@
     <div>
         <button class="botao"> <a href="cadastro_conteudo.html">Nova Lenda</a></button>
     </div>
-    <div class="formulario">
-        <form class="form_cadastro">
-            <div class="container">
-                <table>
-                    <tr>
-                        <th>Autor</th>
-                        <th>Título</th>
-                        <th>View</th>
-                        <th>Ações</th>
-                    </tr>
-                    <tr>
-                        <td>Marcio</td>
-                        <td>maaa</td>
-                        <td>12</td>
-                        <td><button>Editar</button><button>Excluir</button></td>
-                    </tr>
-                    <tr>
-                        <td>Patricia</td>
-                        <td>p bsdgs</td>
-                        <td>34</td>
-                        <td><button>Editar</button><button>Excluir</button></td>
-                    </tr>
-                </table>
-            </div>
-        </form>
+    <div class="lista">
+        <div class="container">
+            <table>
+                <tr>
+                    <th>Título</th>
+                    <th>Conteúdo</th>
+                    <th>View</th>
+                    <th>Ações</th>
+                </tr>
+                <tbody id="listagem"></tbody>
+            </table>
+        </div>
     </div>
+
+    <script>
+        fetch("http://localhost:3333/lendas", {
+            method: "GET",
+        }).then(function (resposta) {
+            resposta.json().then(json => {
+                listar_len(json)
+                });
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        function listar_len(lendas) {
+            let tbody = '';
+
+            lendas.forEach(function(lendas) {
+                tbody = `
+                    <tr>
+                        <td>${lendas.nome_lendas}</td>
+                        <td>${lendas.conteudo_lenda}</td>
+                        <td>1</td>
+                        <td><button>Editar</button><button>Excluir</button></td>
+                    </tr>
+                `;
+            });
+
+            listagem.innerHTML = tbody;
+        }
+    </script>
 
 </body>
 

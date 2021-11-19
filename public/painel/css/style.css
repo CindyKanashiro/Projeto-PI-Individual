@@ -34,7 +34,7 @@ header div .image {
 
 .menu {
     height: 8vh;
-    background-color: #7a2828;
+    background-color: white;
     
     padding: 0 0 0 25px;
 }
@@ -51,7 +51,7 @@ header div .image {
  }
 
  .menu .nav_bar li a {
-    color: white;
+    color: #525252;
     text-transform: uppercase;
     
     text-decoration: none;
@@ -67,8 +67,8 @@ header div .image {
  }
 
 button.botao a {
-    color: white;
-    background-color: #440000;
+    color: #525252;
+    background-color: #f8c1ef;
     width: 10%;
     padding: 2px 2px 2px 2px;
     border-top: 0px;
@@ -78,6 +78,28 @@ button.botao a {
  }
 
  .formulario {
+    height: 70%;
+    width: 50%;
+    background-color: #383838;
+    margin: 25px 25px 0 25px;
+    
+ }
+
+ .formulario .form_cadastro {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+ }
+
+ .formulario .form_cadastro .container {
+    color: white;
+    width: 80%;
+    text-transform: uppercase;
+    padding: 10px 25px 25px 30px;
+    display: inline-grid;
+ }
+ 
+ .lista {
     height: 60vh;
     width: 80vw;
     background-color: #383838;
@@ -85,25 +107,24 @@ button.botao a {
     display: flex;
  }
 
- .formulario .container {
+ .lista .container {
     color: white;
-    width: 80vw;
+    width: 100%;
     text-transform: uppercase;
     padding: 10px 25px 25px 30px;
     display: inline-grid;
+    height: 20%;
  }
 
-
-
 table, th, td {
-    border: 3px solid black;
+    border: 3px solid white;
     border-collapse: collapse;
 }
 
 table button {
-    color: white;
-    background-color: #440000;
-    margin: 0 20px 0 0;
+    color: #525252;
+    background-color: #f8c1ef;
+    margin: 20px 20px 20px 20px;
     width: 20%;
     border-top: 0px;
     border-left: 0px;
@@ -111,42 +132,20 @@ table button {
     border-bottom: 0px;
 }
 
-.formulario {
-    height: 60vh;
-    width: 40vw;
-    background-color: #383838;
-    margin: 25px 25px 0 25px;
-    display: flex;
-}
-
-.formulario .container {
-   color: white;
-   text-transform: uppercase;
-   padding: 10px 25px 25px 50px;
-   display: inline-grid;
-}
-
 input {
+    margin: 10px;
    border-top: 0px;
    border-left: 0px;
    border-right: 0px;
+   width: 100%;
 }
 
  button  {
-   color: white;
+   color: #525252;
    font-size: 16px;
    font-weight: 200;
-   letter-spacing: 1px;
    padding: 13px 20px 13px;
-   outline: 0;
-   border: 1px solid black;
-   cursor: pointer;
-   position: relative;
-   background-color: #440000;
-   user-select: none;
-   -webkit-user-select: none;
-   touch-action: manipulation;
-   
+   background-color: #f8c1ef;
 }
 
 .container_dash {

@@ -1,10 +1,10 @@
-var usuarioModel = require("../models/usuarioModel");
+var lendasModel = require("../models/lendasModel");
 
 var sessoes = [];
 
 function listar(req, res) {
 
-   usuarioModel.listar()
+   lendasModel.listar()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -59,9 +59,6 @@ function cadastrar(req, res) {
     var nome = req.body.nome;
     var email = req.body.email;
     var senha = req.body.senha;
-
-    console.log("nada")
-    console.log(req)
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");

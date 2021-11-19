@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro/Painel</title>
-    <link rel="stylesheet" href="css/painel_cadastro_style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../images/icon/logo.png">
 </head>
 
@@ -33,7 +33,7 @@
         <h2>Cadastro</h2>
     </div>
     <div class="formulario">
-        <form class="form_cadastro">
+        <form id="formulario" class="form_cadastro">
             <div class="container">
                 Nome:
                 <input name="nome" type="text" placeholder="">
@@ -44,13 +44,45 @@
                 Senha:
                 <input name="senha" type="password" placeholder="******">
                 <br>
-                Confirmação da Senha:
-                <input name="confirmacao-senha" type="password" placeholder="******">
-                <br>
-                <button>Cadastrar</button>
+                <button onclick="botao_cadastrar_usu()">Cadastrar</button>
             </div>
         </form>
     </div>
+
+    <script>
+        function botao_cadastrar_usu() {
+            event.preventDefault()
+            let formulario = new URLSearchParams(new FormData(document.getElementById("formulario")))
+
+            fetch("http://localhost:3333/usuarios/cadastrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                       alert("uhuul")
+                        setTimeout(function () {
+                            window.location = "listagem_usu.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+
+                    resposta.text().then(texto => {
+                        alert(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
+    </script>
 </body>
 
 </html>
