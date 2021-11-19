@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../images/icon/logo.png">
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -31,12 +33,11 @@
         <h2>Cadastro de Lendas</h2>
     </div>
     <div class="formulario">
-        <form class="form_cadastro">
+        <form id="formulario" class="form_cadastro">
             <div class="container">
                 Nome da Lenda:
                 <input name="nome" type="text" placeholder="">
                 <br>
-                Imagem da Lenda:
                 <input name="imagem" type="file" placeholder="">
                 <br>
                 Conteúdo:
@@ -46,6 +47,42 @@
             </div>
         </form>
     </div>
-    
+
+    <script>
+        function botao_cadastrar() {
+            event.preventDefault()
+            let formulario = new URLSearchParams(new FormData(document.getElementById("formulario")))
+
+            fetch("http://localhost:3333/lendas/cadastrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        alert("uhuul")
+                        setTimeout(function () {
+                            window.location = "lista_lendas.html";
+                        }, 1000); // apenas para exibir o loading
+                    });
+
+                } else {
+
+
+                    resposta.text().then(texto => {
+                        alert(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
+          
+    </script>
+
 </body>
+
 </html>
