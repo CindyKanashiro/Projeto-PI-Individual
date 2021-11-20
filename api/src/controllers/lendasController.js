@@ -57,17 +57,17 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     var nome = req.body.nome;
-    var email = req.body.email;
-    var senha = req.body.senha;
+    var conteudo = req.body.conteudo;
+    //var senha = req.body.senha;
 
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    if (nome == '') {
+        res.status(400).send("Nome da Lenda não está definida!");
+    } else if (conteudo == '') {
+        res.status(400).send("Conteúdo não definido!");
+    } /*else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else {
-        usuarioModel.cadastrar(nome, email, senha)
+    } */else {
+        lendasModel.cadastrar(nome, conteudo)
             .then(
                 function (resultado) {
                     res.json(resultado);

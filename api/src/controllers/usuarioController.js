@@ -63,12 +63,12 @@ function cadastrar(req, res) {
     console.log("nada")
     console.log(req)
 
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
+    if (nome == '') {
+        res.status(400).send("Seu nome não está definido");
+    } else if (email == '') {
+        res.status(400).send("Seu email não está definido!");
+    } else if (senha == '') {
+        res.status(400).send("Sua senha não está definida!");
     } else {
         usuarioModel.cadastrar(nome, email, senha)
             .then(

@@ -41,7 +41,7 @@
         </div>
         <div class="content">
             <img src="../images/livro.png">
-            <h2>100</h2>
+            <h2 id="numero_len">100</h2>
             <h3>Lendas</h3>
         </div>
         <div class="content">
@@ -57,10 +57,25 @@
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(json => {
-                    numero_usu.innerHTML = json.length
+                    numero_usu.innerHTML = json.length;
                 });
             } else {
                 numero_usu.innerHTML = 0;
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        fetch("http://localhost:3333/lendas", {
+            method: "GET",
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    numero_len.innerHTML = json.length;
+                });
+            } else {
+                numero_len.innerHTML = 0;
             }
 
         }).catch(function (erro) {

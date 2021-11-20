@@ -54,6 +54,30 @@
             event.preventDefault()
             let formulario = new URLSearchParams(new FormData(document.getElementById("formulario")))
 
+            var nome = formulario.get("nome");
+            var email = formulario.get("email");
+            var senha = formulario.get("senha");
+
+            if (nome == "" || email == "" || senha == "") {
+
+                window.alert("Preencha todos os campos para prosseguir!");
+                if (nome == "") {
+                    console.log('nome está em branco')
+                }
+                if (email == "") {
+                    console.log('email está em branco')
+                }
+                if (senha == "") {
+                    console.log('senha está em branco')
+                }
+            }
+
+            if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+                window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+                finalizarAguardar();
+                return false;
+            }
+
             fetch("http://localhost:3333/usuarios/cadastrar", {
                 method: "POST",
                 body: formulario
@@ -63,7 +87,7 @@
                     console.log(resposta);
 
                     resposta.json().then(json => {
-                       alert("uhuul")
+                        alert("uhuul")
                         setTimeout(function () {
                             window.location = "listagem_usu.html";
                         }, 1000); // apenas para exibir o loading
