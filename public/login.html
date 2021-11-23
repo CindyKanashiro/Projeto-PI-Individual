@@ -24,17 +24,17 @@
                         <div>
                             <label>E-mail</label>
                             <br>
-                            <input name="email" type="text">
+                            <input id="ipt_email" name="email" type="text">
                         </div>
                         <br>
                         <div>
                             <label>Senha</label>
                             <br>
-                            <input name="senha" type="password">
+                            <input id="ipt_senha" name="senha" type="password">
                         </div>
                         <br>
                         <div class="botao">
-                            <button type="submit">Login</button>
+                            <button type="button" onclick="botao_login()">Login</button>
                         </div>
                         <div class="footer">
                             <div class="container">
@@ -48,9 +48,81 @@
     </div>
 </body>
 <script>
-     function limparFormulario() {
-        document.getElementById("form_login").reset();
+
+   /* function aguardar() {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "flex";
+}
+
+function finalizarAguardar(texto) {
+    var divAguardar = document.getElementById("div_aguardar");
+    divAguardar.style.display = "none";
+
+    var divErrosLogin = document.getElementById("div_erros_login");
+    if (texto) {
+        divErrosLogin.innerHTML = texto;
     }
+}*/
+    function botao_login() {
+       // aguardar();
+
+        var email = ipt_email.value;
+        var senha = ipt_senha.value;
+
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (email == "" || senha == "") {
+            window.alert("Preencha todos os campos para prosseguir!");
+           // finalizarAguardar();
+            return false;
+        }
+
+        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            //finalizarAguardar();
+            return false;   
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: email,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./painel/home_painel.html";
+                    }, 1000); // apenas para exibir o loading
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    //finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+      }
+    
 
 </script>
 
