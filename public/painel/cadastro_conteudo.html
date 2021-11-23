@@ -36,12 +36,12 @@
         <form id="formulario" class="form_cadastro">
             <div class="container">
                 Nome da Lenda:
-                <input name="nome" type="text" placeholder="">
+                <input id="ipt_nome" name="nome" type="text" placeholder="">
                 <br>
                 <!--<input name="imagem" type="file" placeholder="">
                 <br>-->
                 Conteúdo:
-                <textarea name="conteudo" rows="10" cols="100"></textarea>
+                <textarea id="ipt_conteudo" name="conteudo" rows="10" cols="100"></textarea>
                 <br>
                 <button onclick="botao_cadastrar()">Cadastrar</button>
             </div>
@@ -49,6 +49,23 @@
     </div>
 
     <script>
+
+        var id = location.search.slice(1).split("=")[1];
+
+        if (typeof id != "undefined") {
+            fetch("http://localhost:3333/lendas/mostrar/" + id, {
+                method: "GET",
+            }).then(function (resposta) {
+                resposta.json().then(json => {
+                    var retorno_lenda = json[0];
+                    ipt_nome.value = retorno_lenda.nome_lendas
+                    ipt_conteudo.value = retorno_lenda.conteudo_lenda
+                });
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
+
         function botao_cadastrar() {
             event.preventDefault()
             let formulario = new URLSearchParams(new FormData(document.getElementById("formulario")))
@@ -67,34 +84,50 @@
                 }
             }
 
-            fetch("http://localhost:3333/lendas/cadastrar", {
-                method: "POST",
-                body: formulario
-            }).then(function (resposta) {
+            if (typeof id == "undefined") {
+                fetch("http://localhost:3333/lendas/cadastrar", {
+                    method: "POST",
+                    body: formulario
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        resposta.json().then(json => {
+                            alert("Lenda cadastrada com sucesso!!")
+                            setTimeout(function () {
+                                window.location = "lista_lendas.html";
+                            }, 1000); // apenas para exibir o loading
+                        });
+                    } else {
+                        resposta.text().then(texto => {
+                            alert(texto);
+                        });
+                    }
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
 
-                if (resposta.ok) {
-                    console.log(resposta);
-
-                    resposta.json().then(json => {
-                        alert("uhuul")
-                        setTimeout(function () {
-                            window.location = "lista_lendas.html";
-                        }, 1000); // apenas para exibir o loading
-                    });
-
-                } else {
-
-
-                    resposta.text().then(texto => {
-                        alert(texto);
-                    });
-                }
-
-            }).catch(function (erro) {
-                console.log(erro);
-            })
+            } else {
+                fetch("http://localhost:3333/lendas/atualizar/" + id, {
+                    method: "PUT",
+                    body: formulario
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        resposta.json().then(json => {
+                            alert("Lenda atualizada com sucesso!!")
+                            setTimeout(function () {
+                                window.location = "lista_lendas.html";
+                            }, 1000); // apenas para exibir o loading
+                        });
+                    } else {
+                        resposta.text().then(texto => {
+                            alert(texto);
+                        });
+                    }
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+            }
         }
-          
+
     </script>
 
 </body>

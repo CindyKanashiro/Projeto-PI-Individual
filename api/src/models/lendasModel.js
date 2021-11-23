@@ -8,15 +8,6 @@ function listar() {
     return database.executar(instrucao);
 }
 
-function entrar(nome_lendas) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", nome_lendas)
-    var instrucao = `
-        SELECT * FROM lendas WHERE nome_lendas = '${nome_lendas}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
 function cadastrar(nome, conteudo) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, conteudo);
     var instrucao = `
@@ -26,8 +17,31 @@ function cadastrar(nome, conteudo) {
     return database.executar(instrucao);
 }
 
+function deletar(id) {
+    var instrucao = `
+    DELETE FROM lendas WHERE id_lendas = ${id};
+    `;
+    return database.executar(instrucao);
+}
+
+function mostrar(id) {
+    var instrucao = `
+    SELECT nome_lendas, conteudo_lenda FROM lendas where id_lendas = ${id}
+    `;
+    return database.executar(instrucao);
+}
+
+function atualizar(id, nome, conteudo) {
+    var instrucao = `
+    UPDATE lendas SET nome_lendas = '${nome}', conteudo_lenda = '${conteudo}' WHERE id_lendas = ${id}
+    `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    entrar,
     cadastrar,
     listar,
+    deletar,
+    mostrar,
+    atualizar
 };

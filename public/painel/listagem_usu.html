@@ -70,13 +70,46 @@
                     <tr>
                         <td>${usuario.nome_usuario}</td>
                         <td>${usuario.email_usuario}</td>
-                        <td>1</td>
-                        <td><button>Editar</button><button>Excluir</button></td>
+                        <td>${usuario.view_usuario}</td>
+                        <td>
+                            <button type="button" onclick="editar_usuario(${usuario.id_usuario})">Editar</button>
+                            <button type="button" onclick="excluir_usuario(${usuario.id_usuario})">Excluir</button></td>
                     </tr>
                 `;
             });
 
             listagem.innerHTML = tbody;
+        }
+
+        function editar_usuario(id) {
+            window.location = "painel_cadastro.html?id_usuario=" + id
+        }
+
+        function excluir_usuario(id) {
+            fetch("http://localhost:3333/usuarios/deletar/" + id, {
+                method: "DELETE",
+            }).then(function (resposta) {
+                resposta.json().then(json => {
+                    alert("Usuario removido com sucesso!")
+                    fetch("http://localhost:3333/usuarios", {
+                        method: "GET",
+                    }).then(function (resposta) {
+                        if (resposta.status == 200) {
+                            resposta.json().then(json => {
+                                listar_usu(json)
+                            });
+                        } else {
+                            listagem.innerHTML = '';
+                        }
+                    }).catch(function (erro) {
+                        console.log(erro);
+                    })
+
+                });
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
         }
     </script>
 </body>

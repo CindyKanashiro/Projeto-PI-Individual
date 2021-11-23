@@ -15,4 +15,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.delete("/deletar/:id", function (req, res) {
+    usuarioController.deletar(req, res);
+})
+
+router.get("/mostrar", function (req, res) {
+    usuarioController.mostrar(req, res);
+});
+
 module.exports = router;

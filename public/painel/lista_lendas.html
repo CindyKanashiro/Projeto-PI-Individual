@@ -54,9 +54,13 @@
         fetch("http://localhost:3333/lendas", {
             method: "GET",
         }).then(function (resposta) {
-            resposta.json().then(json => {
-                listar_len(json)
+            if (resposta.status == 200) {
+                resposta.json().then(json => {
+                    listar_len(json)
                 });
+            } else {
+                listagem.innerHTML = '';
+            }
 
         }).catch(function (erro) {
             console.log(erro);
@@ -65,18 +69,51 @@
         function listar_len(lendas) {
             let tbody = '';
 
-            lendas.forEach(function(lendas) {
+            lendas.forEach(function (lenda) {
                 tbody += `
                     <tr>
-                        <td>${lendas.nome_lendas}</td>
-                        <td>${lendas.conteudo_lenda}</td>
-                        <td>1</td>
-                        <td><button>Editar</button><button>Excluir</button></td>
+                        <td>${lenda.nome_lendas}</td>
+                        <td>${lenda.conteudo_lenda}</td>
+                        <td>${lenda.view}</td>
+                        <td>
+                            <button type="button" onclick="editar_lenda(${lenda.id_lendas})">Editar</button>
+                            <button type="button" onclick="excluir_lenda(${lenda.id_lendas})">Excluir</button></td>
                     </tr>
                 `;
             });
 
             listagem.innerHTML = tbody;
+        }
+
+        function editar_lenda(id) {
+            window.location = "cadastro_conteudo.html?id_lendas=" + id
+        }
+
+        function excluir_lenda(id) {
+            fetch("http://localhost:3333/lendas/deletar/" + id, {
+                method: "DELETE",
+            }).then(function (resposta) {
+                resposta.json().then(json => {
+                    alert("Lenda removida com sucesso!")
+                    fetch("http://localhost:3333/lendas", {
+                        method: "GET",
+                    }).then(function (resposta) {
+                        if (resposta.status == 200) {
+                            resposta.json().then(json => {
+                                listar_len(json)
+                            });
+                        } else {
+                            listagem.innerHTML = '';
+                        }
+                    }).catch(function (erro) {
+                        console.log(erro);
+                    })
+
+                });
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
         }
     </script>
 

@@ -26,8 +26,22 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucao);
 }
 
+function deletar(id) {
+    var instrucao = `
+    DELETE FROM usuario WHERE id_usuario = ${id}
+    `;
+    return database.executar(instrucao);
+}
+
+function mostrar (id) {
+    var instrucao = `
+    SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+    `;
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    deletar
 };
