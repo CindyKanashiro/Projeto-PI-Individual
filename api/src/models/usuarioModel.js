@@ -8,13 +8,9 @@ function listar() {
   return database.executar(instrucao);
 }
 
-function entrar(id,email, senha) {
-  console.log(
-    "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
-    senha
-  );
+function entrar(email, senha) {
   var instrucao = `
-        SELECT * FROM usuario WHERE id_usuario = '${id}' AND email_usuario = '${email}' AND senha_usuario = '${senha}';
+        SELECT * FROM usuario WHERE email_usuario = '${email}' AND senha_usuario = '${senha}';
     `;
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
@@ -55,11 +51,19 @@ function atualizar(id, nome, email, senha) {
   return database.executar(instrucao);
 }
 
+function contar_acesso(id) {
+  var instrucao = `
+  UPDATE usuario SET view_usuario = view_usuario + 1 WHERE id_usuario = ${id}
+  `;
+  return database.executar(instrucao);
+}
+
 module.exports = {
   entrar,
   cadastrar,
   listar,
   deletar,
   mostrar,
-  atualizar
+  atualizar,
+  contar_acesso
 };

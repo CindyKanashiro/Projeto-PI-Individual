@@ -13,8 +13,8 @@
 <body>
     <header>
         <div class="container">
-            <img src="../images/Lost_in_Japan-history-removebg-preview.png">
-            <h3>Olá Maria</h3>
+            <img src="images/Lost_sakura-removebg-preview.png">
+            <h3 id="nome_usu"></h3>
         </div>
     </header>
     <div class="menu">
@@ -27,6 +27,9 @@
             </li>
             <li>
                 <a href="lista_lendas.html">Lendas</a>
+            </li>
+            <li>
+                <a href="#" onclick="sair()">Sair</a>
             </li>
         </div>
     </div>
@@ -46,12 +49,16 @@
         </div>
         <div class="content">
             <img src="../images/acesso.png">
-            <h2>0</h2>
+            <h2 id="numero_ace">0</h2>
             <h3>Acessos</h3>
         </div>
     </div>
 
+    <script src="js/script.js"></script>
+
     <script>
+        numero_ace.innerHTML = sessionStorage.VIEW_USUARIO;
+        
         fetch("http://localhost:3333/usuarios", {
             method: "GET",
         }).then(function (resposta) {

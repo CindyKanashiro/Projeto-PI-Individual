@@ -23,6 +23,7 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
+ 
   var email = req.body.email;
   var senha = req.body.senha;
 
@@ -34,11 +35,9 @@ function entrar(req, res) {
     usuarioModel
       .entrar(email, senha)
       .then(function (resultado) {
-        console.log(`\nResultados encontrados: ${resultado.length}`);
-        console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
         if (resultado.length == 1) {
-          console.log(resultado);
+          usuarioModel.contar_acesso(resultado[0].id_usuario)
+          resultado[0].view_usuario++
           res.json(resultado[0]);
         } else if (resultado.length == 0) {
           res.status(403).send('Email e/ou senha inválido(s)');

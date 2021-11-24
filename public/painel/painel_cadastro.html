@@ -12,7 +12,8 @@
   <body>
     <header>
       <div class="container">
-        <img src="../images/Lost_in_Japan-history-removebg-preview.png" />
+        <img src="images/Lost_sakura-removebg-preview.png" />
+        <h3 id="nome_usu"></h3>
       </div>
     </header>
     <div class="menu">
@@ -26,6 +27,9 @@
         <li>
           <a href="lista_lendas.html">Lendas</a>
         </li>
+        <li>
+          <a href="#" onclick="sair()">Sair</a>
+      </li>
       </div>
     </div>
     <div class="titulo">
@@ -47,6 +51,8 @@
         </div>
       </form>
     </div>
+
+    <script src="js/script.js"></script>
 
     <script>
       var id = location.search.slice(1).split('=')[1];

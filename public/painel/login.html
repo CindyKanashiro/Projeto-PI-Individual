@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Lost in Japan</title>
+    <link rel="stylesheet" href="css/login_style.css">
+    <link rel="icon" href="../public/images/icon/logo.png">
+</head>
+
+<body>
+    <div class="bg-image"></div>
+    <div class="cadastro">
+        <div class="container">
+            <img src="./images/mascaras.jpg" alt="">
+            <div class="form">
+                <form id="form_login" method="post" onsubmit="return login()">
+                    <div class="texto">
+                        <h1>Login to Lost in Japan</h1>
+                        <p>いらっしゃいませ!</p>
+                        <br>
+                        <div>
+                            <label>E-mail</label>
+                            <br>
+                            <input id="ipt_email" name="email" type="text">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Senha</label>
+                            <br>
+                            <input minlength="6" id="ipt_senha" name="senha" type="password">
+                        </div>
+                        <br>
+                        <div class="botao">
+                            <button type="button" onclick="botao_login()">Login</button>
+                        </div>
+                        <div class="footer">
+                            <div class="container">
+                                <h4>Feito com amor por um aluno BandTec &copy; 2021</h4>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+
+    function botao_login() {
+        var id = location.search.slice(1).split("=")[1];
+
+        event.preventDefault()
+        let formulario = new URLSearchParams(new FormData(document.getElementById("form_login")))
+
+        var email = formulario.get("email");
+        var senha = formulario.get("senha");
+
+        if (email == "" || senha == "") {
+
+            window.alert("Preencha todos os campos para prosseguir!");
+            if (email == "") {
+                console.log('Email está em branco')
+            }
+            if (senha == "") {
+                console.log('Senha está em branco')
+            }
+        }
+
+        if (typeof id == "undefined") {
+            fetch("http://localhost:3333/usuarios/autenticar", {
+                method: "POST",
+                body: formulario
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        alert("Login feito com sucesso!!")
+
+                        sessionStorage.EMAIL_USUARIO = json.email_usuario;
+                        sessionStorage.NOME_USUARIO = json.nome_usuario;
+                        sessionStorage.ID_USUARIO = json.id_usuario;
+                        sessionStorage.VIEW_USUARIO = json.view_usuario;
+
+                        setTimeout(function () {
+                            window.location = "home_painel.html";
+                        }, 1000); // apenas para exibir o loading
+                    });
+                } else {
+                    resposta.text().then(texto => {
+                        alert(texto);
+                    });
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
+    }
+
+
+</script>
+
+</html>

@@ -13,19 +13,19 @@
 <body>
     <header>
         <div class="container">
-            <img src="images/Letter2__5_-removebg-preview.png">
+            <img src="images/titulo.png">
         </div>
     </header>
     <section>
         <div class="container">
             <div class="banner_text">
-                <img src="images/fashion_much-removebg-preview.png">
+                <img src="images/slogan.png">
             </div>
         </div>
     </section>
     <div class="sobre">
         <div class="container">
-            <img src="images/Cheers (4).png">
+            <img src="images/card_sobre.png">
         </div>
         <div class="content">
             <img src="images/Sobre-removebg-preview.png">
@@ -45,8 +45,8 @@
         <div class="titulo">
             <img src="images/_folclore_japones_bem_na_sua_tela_-removebg-preview.png">
         </div>
-        <div class="container1">
-            <div class="card">
+        <div class="container1" id="listagem">
+            <!-- <div class="card">
                 <div class="content">
                     <h2>Sakura</h2>
                     <p>Lenda que fala sobre amor verdadeiro,
@@ -71,9 +71,9 @@
                     </p>
                 </div>
                 <img src="../public/images/maneki-removebg-preview.png">
-            </div>
+            </div> -->
         </div>
-        <div class="container2">
+        <<!-- div class="container2">
             <div class="card">
                 <div class="content">
                     <h2>Daruma</h2>
@@ -81,7 +81,7 @@
                         caminho para atingir seu objetivo.
                     </p>
                 </div>
-                <img src="images/Capturar-removebg-preview.png">
+                <img src="images/daruma.png">
             </div>
             <div class="card">
                 <div class="content">
@@ -101,7 +101,7 @@
                 </div>
                 <img src="../public/images/suzaku-removebg-preview.png">
             </div>
-        </div>
+    </div> -->
     </div>
     <footer>
         <div class="footer_content">
@@ -119,6 +119,43 @@
             <p>copyright &copy;2020 LostinJapan. design by <span>Cindy Kanashiro</span></p>
         </div>
     </footer>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        fetch("http://localhost:3333/lendas", {
+            method: "GET",
+        }).then(function (resposta) {
+            if (resposta.status == 200) {
+                resposta.json().then(json => {
+                    listar_len(json)
+                });
+            } else {
+                listagem.innerHTML = '';
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        function listar_len(lendas) {
+            let tbody = '';
+
+            lendas.forEach(function (lenda) {
+                tbody += `
+                <div class="card">
+                    <div class="content">
+                        <h2>${lenda.nome_lendas}</h2>
+                        <p>${lenda.conteudo_lenda}</p>
+                    </div>
+                    <img src="../public/images/kitsune-removebg-preview.png">
+                </div>
+                `;
+            });
+
+            listagem.innerHTML = tbody;
+        }
+    </script>
 
 </body>
 
