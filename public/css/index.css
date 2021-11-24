@@ -281,7 +281,7 @@ div.fake_body .container2 .card .content a {
 footer {
   width: 100%;
   height: 31vh;
-  background-color: #faa8ca;
+  background-color: #241410;
 }
 
 .footer_content {
@@ -329,7 +329,7 @@ footer {
 }
 
 .footer-bottom {
-    background-color: #241410;
+    background-color: #faa8ca;
     padding: 20px 0;
     text-align: center;
 }
@@ -341,7 +341,7 @@ footer {
 }
 
 .footer-bottom span {
-    color: #f79fc8;
+    color: #241410;
     text-transform: uppercase;
     opacity: .4;
     font-weight: 200;
