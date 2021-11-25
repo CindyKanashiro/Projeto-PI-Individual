@@ -45,7 +45,7 @@
                 <tr>
                     <th>Título</th>
                     <th>Conteúdo</th>
-                    <th>View</th>
+                    <th>Criado por</th>
                     <th>Ações</th>
                 </tr>
                 <tbody id="listagem"></tbody>
@@ -78,8 +78,8 @@
                 tbody += `
                     <tr>
                         <td>${lenda.nome_lendas}</td>
-                        <td>${lenda.conteudo_lenda}</td>
-                        <td>${lenda.view}</td>
+                        <td class="quebra">${lenda.conteudo_lenda}</td>
+                        <td>${lenda.nome_usuario}</td>
                         <td>
                         <button type="button" onclick="editar_lenda(${lenda.id_lendas})">Editar</button>
                         <button type="button" onclick="excluir_lenda(${lenda.id_lendas})">Excluir</button></td>

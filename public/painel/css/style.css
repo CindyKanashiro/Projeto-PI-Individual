@@ -100,7 +100,7 @@ button.botao a {
  }
  
  .lista {
-    height: 100vh;
+    height: 100%;
     width: 90vw;
     background-color: #47332e;
     margin: 25px 25px 0 25px;
@@ -167,4 +167,8 @@ input {
 
 .container_dash .content img {
     width: 50px;
+}
+
+.quebra {
+    overflow-wrap: anywhere;
 }

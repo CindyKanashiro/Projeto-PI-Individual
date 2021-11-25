@@ -45,63 +45,7 @@
         <div class="titulo">
             <img src="images/_folclore_japones_bem_na_sua_tela_-removebg-preview.png">
         </div>
-        <div class="container1" id="listagem">
-            <!-- <div class="card">
-                <div class="content">
-                    <h2>Sakura</h2>
-                    <p>Lenda que fala sobre amor verdadeiro,
-                        entre um ser humano e uma árvore triste que se torna humano. </p>
-                </div>
-                <img src="images/sakura_ar-removebg-preview.png">
-            </div>
-            <div class="card">
-                <div class="content">
-                    <h2>Kitsune Mask</h2>
-                    <p> Em muitas histórias do folclore japonês,
-                        as raposas são vistas fazendo travessuras para punir aqueles que foram gananciosos ou
-                        orgulhosos. </p>
-                </div>
-                <img src="../public/images/kitsune-removebg-preview.png">
-            </div>
-            <div class="card">
-                <div class="content">
-                    <h2>Maneki Neko</h2>
-                    <p> Um dos talismãs mais populares do Japão, o Maneki Neko
-                        atrai prosperidade, saúde, proteção e felicidade.
-                    </p>
-                </div>
-                <img src="../public/images/maneki-removebg-preview.png">
-            </div> -->
-        </div>
-        <<!-- div class="container2">
-            <div class="card">
-                <div class="content">
-                    <h2>Daruma</h2>
-                    <p>Simboliza paciência, e principalmente, a força de vontade para superar qualquer obstáculo no
-                        caminho para atingir seu objetivo.
-                    </p>
-                </div>
-                <img src="images/daruma.png">
-            </div>
-            <div class="card">
-                <div class="content">
-                    <h2>Amaterasu</h2>
-                    <p>Representada como um lobo branco, suas características são seu estilo aventureiro ou
-                        à procura de novos horizontes.
-                        É gentil, prestativa, e empática. </p>
-                </div>
-                <img src="../public/images/okami-removebg-preview.png">
-            </div>
-            <div class="card">
-                <div class="content">
-                    <h2>Suzaku</h2>
-                    <p>O símbolo da fidelidade, bondade, nobreza e a força de vontade,
-                        considerado como mais sagrada dos pontos cardeais do Japão.
-                    </p>
-                </div>
-                <img src="../public/images/suzaku-removebg-preview.png">
-            </div>
-    </div> -->
+        <div class="container1" id="listagem"></div>
     </div>
     <footer>
         <div class="footer_content">
@@ -119,8 +63,6 @@
             <p>copyright &copy;2020 LostinJapan. design by <span>Cindy Kanashiro</span></p>
         </div>
     </footer>
-
-    <script src="js/script.js"></script>
 
     <script>
         fetch("http://localhost:3333/lendas", {
@@ -148,7 +90,7 @@
                         <h2>${lenda.nome_lendas}</h2>
                         <p>${lenda.conteudo_lenda}</p>
                     </div>
-                    <img src="../public/images/kitsune-removebg-preview.png">
+                    <img src="../api/uploads/${lenda.imagem_lenda}">
                 </div>
                 `;
             });

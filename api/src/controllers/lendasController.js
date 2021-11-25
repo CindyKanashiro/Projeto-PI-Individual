@@ -23,13 +23,15 @@ function listar(req, res) {
 function cadastrar(req, res) {
     var nome = req.body.nome;
     var conteudo = req.body.conteudo;
+    var imagem = req.file.filename;
+    var fk_usuario = req.body.fk_usuario;
 
     if (nome == '') {
         res.status(400).send("Nome da Lenda não está definida!");
     } else if (conteudo == '') {
         res.status(400).send("Conteúdo não definido!");
     } else {
-        lendasModel.cadastrar(nome, conteudo)
+        lendasModel.cadastrar(nome, conteudo, imagem, fk_usuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
