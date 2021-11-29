@@ -89,13 +89,16 @@ function atualizar(req, res) {
     var nome = req.body.nome;
     var conteudo = req.body.conteudo;
     var id = req.params.id;
+    var imagem = req.file.filename;
 
     if (nome == '') {
         res.status(400).send("Nome da Lenda não está definida!");
     } else if (conteudo == '') {
         res.status(400).send("Conteúdo não definido!");
+    } else if (imagem == '') {
+        res.status(400).send("Imagem não definido!");
     } else {
-        lendasModel.atualizar(id, nome, conteudo)
+        lendasModel.atualizar(id, nome, conteudo, imagem)
             .then(
                 function (resultado) {
                     res.json(resultado);

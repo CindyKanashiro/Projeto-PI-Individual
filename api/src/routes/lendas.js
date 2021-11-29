@@ -33,7 +33,7 @@ router.get("/mostrar/:id", function (req, res) {
     lendasController.mostrar(req, res);
 });
 
-router.put("/atualizar/:id", function (req, res) {
+router.put("/atualizar/:id",upload.single("imagem"), function (req, res) {
     lendasController.atualizar(req, res);
 });
 

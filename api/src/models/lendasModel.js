@@ -33,9 +33,9 @@ function mostrar(id) {
     return database.executar(instrucao);
 }
 
-function atualizar(id, nome, conteudo) {
+function atualizar(id, nome, conteudo, imagem) {
     var instrucao = `
-    UPDATE lendas SET nome_lendas = '${nome}', conteudo_lenda = '${conteudo}' WHERE id_lendas = ${id}
+    UPDATE lendas SET nome_lendas = '${nome}', conteudo_lenda = '${conteudo}', imagem_lenda = '${imagem}' WHERE id_lendas = ${id}
     `;
     return database.executar(instrucao);
 }

@@ -72,7 +72,7 @@ div.sobre .content {
 
 div.sobre .content img {
     width: 50%;
-    margin: 10px 0 0 116px;
+    margin: 0 0 0 116px;
 }
 
 div.sobre .content p {
@@ -102,6 +102,63 @@ div.slogan .container {
 }
 
 div.slogan .container img {
+    width: 60%;
+}
+
+div.slogan1 {
+    width: 100%;
+    height: 500px;
+    background-color: #a32c68;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+div.slogan1 .container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    margin-top: 105px;
+}
+
+div.slogan1 .container img {
+    width: 60%;
+}
+
+div.nsei {
+    width: 100%;
+    height: 500px;
+    background-color: #3f0e27;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+div.slogan3 {
+    width: 100%;
+    height: 500px;
+    background-color: #755263;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+div.slogan3 .container {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    margin-top: 105px;
+}
+
+div.slogan3 .container img {
     width: 60%;
 }
 
