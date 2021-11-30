@@ -66,19 +66,18 @@ div.sobre .container img {
 div.sobre .content {
     width: 50%;
     height: 600px;
-    padding: 25px 25px 25px 95px;
+    padding: 25px 25px 25px 25px;
     float: right;
 }
 
-div.sobre .content img {
+div.sobre .content img.titulo {
     width: 50%;
-    margin: 0 0 0 116px;
+    margin: 0 0 0 145px;
 }
 
-div.sobre .content p {
-    color: white;
-    text-transform: uppercase;
-    font-family: sans-serif;
+div.sobre .content img.conteudo {
+    width: 71%;
+    margin: -70px 0 0 67px;
 
 }
 
@@ -107,59 +106,60 @@ div.slogan .container img {
 
 div.slogan1 {
     width: 100%;
-    height: 500px;
-    background-color: #a32c68;
+    height: 700px;
+    background-image: url(../images/sakurabranco.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.8;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+div.slogan1 .titulo_mim {
+    width: 100%;
+    height: 161px;
+    display: flex;
+    justify-content: center;
+}
+
+div.slogan1 .titulo_mim img {
+    width: 22%;
+    height: 250px;
+    margin: -54px
+}
+
+div.slogan1 .container .imagem1 {
+    width: 90%;
+    height: 300px;
     display: flex;
     justify-content: center;
 }
 
 div.slogan1 .container {
-    width: 100%;
-    height: 300px;
-    display: flex;
+    padding: 20px;
+}
+
+div.slogan1 .container h3 {
+    color: #47332e;
+    padding: 0 0 0 20px;
+    text-transform: uppercase;
+    font-size: 2.2em;
+    line-height: 1em;
     justify-content: center;
-    margin-top: 105px;
-}
-
-div.slogan1 .container img {
-    width: 60%;
-}
-
-div.nsei {
-    width: 100%;
-    height: 500px;
-    background-color: #3f0e27;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.8;
     display: flex;
-    justify-content: center;
 }
 
-div.slogan3 {
-    width: 100%;
-    height: 500px;
-    background-color: #755263;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.8;
+div.slogan1 .container p {
+    overflow-wrap: anywhere;
+    color: #47332e;
+    padding: 0 0 0 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    justify-content: center;
     display: flex;
-    justify-content: center;
-}
-
-div.slogan3 .container {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    margin-top: 105px;
-}
-
-div.slogan3 .container img {
-    width: 60%;
 }
 
 div.fake_body {
@@ -338,12 +338,6 @@ div.fake_body .container2 .card .content a {
     font-weight: 700;
 }
 
-footer {
-  width: 100%;
-  height: 31vh;
-  background-color: #241410;
-}
-
 .footer_content {
     display: flex;
     align-items: center;
@@ -352,44 +346,8 @@ footer {
     text-align: center;
 }
 
-.footer_content h3 {
-    font-size: 1.8em;
-    font-weight: 400;
-    text-transform: capitalize;
-    line-height: 3rem;
-}
-
-.footer_content p {
-    max-width: 500px;
-    margin: 10px auto;
-    line-height: 28px;
-    font-size: 14px;
-}
-
-.socials {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0 3rem 0;
-}
-
-.socials li {
-    margin: 0 10px;
-}
-
-.socials a {
-    text-decoration: none;
-    color: white;
-}
-
-.socials a i {
-    font-size:  1.1rem;
-    transition: color .4s ease;
-}
-
 .footer-bottom {
-    background-color: #faa8ca;
+    background-color: #241410;
     padding: 20px 0;
     text-align: center;
 }
@@ -401,7 +359,7 @@ footer {
 }
 
 .footer-bottom span {
-    color: #241410;
+    color: #f8c1ef;
     text-transform: uppercase;
     opacity: .4;
     font-weight: 200;
