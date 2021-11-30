@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS usuario (
   nome_usuario VARCHAR(45),
   email_usuario VARCHAR(45),
   senha_usuario VARCHAR(45),
+  view_usuario int default 0,
   PRIMARY KEY (`id_usuario`));
 
 CREATE TABLE lendas (
@@ -13,7 +14,6 @@ CREATE TABLE lendas (
   nome_lendas varchar(45),
   conteudo_lenda varchar(100),
   imagem_lenda varchar(45),
-  view int default 0,
   fk_usuario int,
   PRIMARY KEY (id_lendas),
   FOREIGN KEY (fk_usuario) REFERENCES usuario (id_usuario)
