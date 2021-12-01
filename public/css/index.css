@@ -197,6 +197,7 @@ div.fake_body .container1 {
     background-color: #47332e;
     flex-wrap: wrap;
     overflow-x: hidden;
+    padding: 0 0 43px 0;
 }
 
 div.fake_body .container1 .card {
@@ -206,7 +207,7 @@ div.fake_body .container1 .card {
     margin: 18px;
     display: flex;
     justify-content: flex-start;
-    background: linear-gradient(45deg, #a32c68, #ffffff);
+    background: linear-gradient(45deg, #a3342c, #ffffff);
 }
 
 div.fake_body .container1 .card img {

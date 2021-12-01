@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 CREATE TABLE lendas (
   id_lendas int NOT NULL AUTO_INCREMENT,
   nome_lendas varchar(45),
-  conteudo_lenda varchar(100),
+  conteudo_lenda text,
   imagem_lenda varchar(45),
   fk_usuario int,
   PRIMARY KEY (id_lendas),
