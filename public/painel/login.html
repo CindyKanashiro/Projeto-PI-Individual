@@ -59,17 +59,12 @@
         var senha = formulario.get("senha");
 
         if (email == "" || senha == "") {
-
-            window.alert("Preencha todos os campos para prosseguir!");
-            if (email == "") {
-                console.log('Email está em branco')
-            }
-            if (senha == "") {
-                console.log('Senha está em branco')
-            }
-        }
-
-        if (typeof id == "undefined") {
+        alert("Insira seus dados!")
+      } else if (email == "@.com" || email == "@gmail.com") {
+          alert("Insira um email válido!");
+        } else if (senha.length < 6) {
+          alert("Insira uma senha com mais de 6 dígitos");
+        } else if (typeof id == "undefined") {
             fetch("http://localhost:3333/usuarios/autenticar", {
                 method: "POST",
                 body: formulario

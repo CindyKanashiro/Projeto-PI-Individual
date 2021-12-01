@@ -1,155 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro/Painel</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="../images/icon/logo.png" />
-  </head>
 
-  <body>
-    <header>
-      <div class="container">
-        <img src="images/Lost_sakura-removebg-preview.png" />
-        <h3 id="nome_usu"></h3>
-      </div>
-    </header>
-    <div class="menu">
-      <div class="nav_bar">
-        <li>
-          <a href="home_painel.html">Home</a>
-        </li>
-        <li>
-          <a href="listagem_usu.html">Administrador</a>
-        </li>
-        <li>
-          <a href="lista_lendas.html">Lendas</a>
-        </li>
-        <li>
-          <a href="#" onclick="sair()">Sair</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro/Painel</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="../images/icon/logo.png" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <img src="images/Lost_sakura-removebg-preview.png" />
+      <h3 id="nome_usu"></h3>
+    </div>
+  </header>
+  <div class="menu">
+    <div class="nav_bar">
+      <li>
+        <a href="home_painel.html">Home</a>
       </li>
+      <li>
+        <a href="listagem_usu.html">Administrador</a>
+      </li>
+      <li>
+        <a href="lista_lendas.html">Lendas</a>
+      </li>
+      <li>
+        <a href="#" onclick="sair()">Sair</a>
+      </li>
+    </div>
+  </div>
+  <div class="titulo">
+    <h2>Cadastro</h2>
+  </div>
+  <div class="formulario">
+    <form id="formulario" class="form_cadastro">
+      <div class="container">
+        Nome:
+        <input id="ipt_nome" name="nome" type="text" placeholder="" />
+        <br />
+        E-mail:
+        <input id="ipt_email" name="email" type="text" placeholder="" />
+        <br />
+        Senha:
+        <input minlength="6" id="ipt_senha" name="senha" type="password" placeholder="" />
+        <br />
+        <button onclick="botao_cadastrar_usu()">Cadastrar</button>
       </div>
-    </div>
-    <div class="titulo">
-      <h2>Cadastro</h2>
-    </div>
-    <div class="formulario">
-      <form id="formulario" class="form_cadastro">
-        <div class="container">
-          Nome:
-          <input id="ipt_nome" name="nome" type="text" placeholder="" />
-          <br />
-          E-mail:
-          <input id="ipt_email" name="email" type="text" placeholder="" />
-          <br />
-          Senha:
-          <input minlength="6" id="ipt_senha" name="senha" type="password" placeholder="" />
-          <br />
-          <button onclick="botao_cadastrar_usu()">Cadastrar</button>
-        </div>
-      </form>
-    </div>
+    </form>
+  </div>
 
-    <script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 
-    <script>
-      var id = location.search.slice(1).split('=')[1];
+  <script>
+    var id = location.search.slice(1).split('=')[1];
 
-      if (typeof id != "undefined") {
-        fetch('http://localhost:3333/usuarios/mostrar/' + id, {
-          method: 'GET'
+    if (typeof id != "undefined") {
+      fetch('http://localhost:3333/usuarios/mostrar/' + id, {
+        method: 'GET'
+      })
+        .then(function (resposta) {
+          resposta.json().then(json => {
+            var retorno_usuario = json[0];
+            ipt_nome.value = retorno_usuario.nome_usuario;
+            ipt_email.value = retorno_usuario.email_usuario;
+            ipt_senha.value = retorno_usuario.senha_usuario;
+          });
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+    }
+    function botao_cadastrar_usu() {
+      event.preventDefault();
+      let formulario = new URLSearchParams(
+        new FormData(document.getElementById('formulario'))
+      );
+
+      var nome = formulario.get('nome');
+      var email = formulario.get('email');
+      var senha = formulario.get('senha');
+
+
+      if (email == "" || senha == "" || nome == "") {
+        alert("Insira seus dados!")
+      } else if (email == "@.com" || email == "@gmail.com") {
+          alert("Insira um email válido!");
+        } else if (senha.length < 6) {
+          alert("Insira uma senha com mais de 6 dígitos");
+      } else if (typeof id == "undefined") {
+        fetch('http://localhost:3333/usuarios/cadastrar', {
+          method: 'POST',
+          body: formulario
         })
           .then(function (resposta) {
-            resposta.json().then(json => {
-              var retorno_usuario = json[0];
-              ipt_nome.value = retorno_usuario.nome_usuario;
-              ipt_email.value = retorno_usuario.email_usuario;
-              ipt_senha.value = retorno_usuario.senha_usuario;
-            });
+            if (resposta.ok) {
+              console.log(resposta);
+
+              resposta.json().then(json => {
+                alert('Usuário cadastrado com sucesso!!');
+                setTimeout(function () {
+                  window.location = 'listagem_usu.html';
+                }, 1000); // apenas para exibir o loading
+              });
+            } else {
+              resposta.text().then(texto => {
+                alert(texto);
+              });
+            }
+          })
+          .catch(function (erro) {
+            console.log(erro);
+          });
+      } else {
+        fetch('http://localhost:3333/usuarios/atualizar/' + id, {
+          method: 'PUT',
+          body: formulario
+        })
+          .then(function (resposta) {
+            if (resposta.ok) {
+              resposta.json().then(json => {
+                alert('Usuario atualizado com sucesso!!');
+                setTimeout(function () {
+                  window.location = 'listagem_usu.html';
+                }, 1000); // apenas para exibir o loading
+              });
+            } else {
+              resposta.text().then(texto => {
+                alert(texto);
+              });
+            }
           })
           .catch(function (erro) {
             console.log(erro);
           });
       }
-      function botao_cadastrar_usu() {
-        event.preventDefault();
-        let formulario = new URLSearchParams(
-          new FormData(document.getElementById('formulario'))
-        );
+    }
+  </script>
+</body>
 
-        var nome = formulario.get('nome');
-        var email = formulario.get('email');
-        var senha = formulario.get('senha');
-
-        if (nome == '' || email == '' || senha == '') {
-          window.alert('Preencha todos os campos para prosseguir!');
-          if (nome == '') {
-            console.log('nome está em branco');
-          }
-          if (email == '') {
-            console.log('email está em branco');
-          }
-          if (senha == '') {
-            console.log('senha está em branco');
-          }
-        }
-
-        if (email.indexOf('@') == -1 || email.indexOf('.com') == -1) {
-          window.alert('Ops, e-mail inválido! Verifique e tente novamente.');
-          finalizarAguardar();
-          return false;
-        }
-
-        if (typeof id == "undefined") {
-          fetch('http://localhost:3333/usuarios/cadastrar', {
-            method: 'POST',
-            body: formulario
-          })
-            .then(function (resposta) {
-              if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                  alert('Usuário cadastrado com sucesso!!');
-                  setTimeout(function () {
-                    window.location = 'listagem_usu.html';
-                  }, 1000); // apenas para exibir o loading
-                });
-              } else {
-                resposta.text().then(texto => {
-                  alert(texto);
-                });
-              }
-            })
-            .catch(function (erro) {
-              console.log(erro);
-            });
-        } else {
-          fetch('http://localhost:3333/usuarios/atualizar/' + id, {
-            method: 'PUT',
-            body: formulario
-          })
-            .then(function (resposta) {
-              if (resposta.ok) {
-                resposta.json().then(json => {
-                  alert('Usuario atualizado com sucesso!!');
-                  setTimeout(function () {
-                    window.location = 'listagem_usu.html';
-                  }, 1000); // apenas para exibir o loading
-                });
-              } else {
-                resposta.text().then(texto => {
-                  alert(texto);
-                });
-              }
-            })
-            .catch(function (erro) {
-              console.log(erro);
-            });
-        }
-      }
-    </script>
-  </body>
 </html>
