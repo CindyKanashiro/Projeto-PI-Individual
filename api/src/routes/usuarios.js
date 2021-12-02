@@ -3,6 +3,7 @@ var router = express.Router();
 
 var usuarioController = require('../controllers/usuarioController');
 
+// função de listagem
 router.get('/', function (req, res) {
   usuarioController.listar(req, res);
 });
@@ -19,6 +20,7 @@ router.delete('/deletar/:id', function (req, res) {
   usuarioController.deletar(req, res);
 });
 
+// carregando os dados do formulário
 router.get('/mostrar/:id', function (req, res) {
   usuarioController.mostrar(req, res);
 });

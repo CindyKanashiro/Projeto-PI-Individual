@@ -56,8 +56,10 @@
 
     <script>
 
-        var id = location.search.slice(1).split("=")[1];
+        // parametro para identificar qual o registro 
+        var id = location.search.slice(1).split("=")[1]; 
 
+        // typeof analisa o tipo
         if (typeof id != "undefined") {
             fetch("http://localhost:3333/lendas/mostrar/" + id, {
                 method: "GET",
@@ -73,8 +75,8 @@
         }
 
         function botao_cadastrar() {
+            // barra o evento padrao- no caso ele esta barrando para passar nas verificações e depois redirecionar
             event.preventDefault()
-            //let formulario = new URLSearchParams(new FormData(document.getElementById("formulario")))
             let formulario = new FormData(document.getElementById("formulario"))
 
             var nome = formulario.get("nome");
@@ -90,10 +92,11 @@
                     console.log('Conteúdo está em branco')
                 }
             }
+            // append = acrescentendo a fk do usuario
             formulario.append("fk_usuario", sessionStorage.ID_USUARIO)
             if (typeof id == "undefined") {
                 fetch("http://localhost:3333/lendas/cadastrar", {
-                    method: "POST",
+                    method: "POST", // enio de dados de formulário ex = cadastro/login
                     body: formulario
                 }).then(function (resposta) {
                     if (resposta.ok) {
@@ -114,7 +117,7 @@
 
             } else {
                 fetch("http://localhost:3333/lendas/atualizar/" + id, {
-                    method: "PUT",
+                    method: "PUT",// edição de dados= dados vem pelo body e identificação pelo parâmetro da url
                     body: formulario
                 }).then(function (resposta) {
                     if (resposta.ok) {

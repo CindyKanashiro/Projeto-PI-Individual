@@ -60,7 +60,7 @@
 
     if (typeof id != "undefined") {
       fetch('http://localhost:3333/usuarios/mostrar/' + id, {
-        method: 'GET'
+        method: 'GET' // listagem ou recuperar alguma informação
       })
         .then(function (resposta) {
           resposta.json().then(json => {

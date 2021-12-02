@@ -70,6 +70,7 @@
         function listar_usu(usuarios) {
             let tbody = '';
 
+            // estrutura de repetição que não necessita de um break
             usuarios.forEach(function(usuario) {
                 tbody += `
                     <tr>
@@ -86,13 +87,14 @@
             listagem.innerHTML = tbody;
         }
 
+        // para onde você quer que redirecione
         function editar_usuario(id) {
             window.location = "painel_cadastro.html?id_usuario=" + id
-        }
+        } // depois da ? é um parâmetro
 
         function excluir_usuario(id) {
             fetch("http://localhost:3333/usuarios/deletar/" + id, {
-                method: "DELETE",
+                method: "DELETE", // deletar
             }).then(function (resposta) {
                 resposta.json().then(json => {
                     alert("Usuario removido com sucesso!")

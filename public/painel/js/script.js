@@ -1,4 +1,5 @@
-window.addEventListener("load", function(event) {
+// arquivo para ser chamado onde quiser/ funções globais
+window.addEventListener("load", function(event) { // adicionar um evento(clicar,carregar,etc)
     if(typeof sessionStorage.NOME_USUARIO == "undefined") {
         alert("Usuário não logado")
         setTimeout(function () {

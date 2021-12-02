@@ -73,6 +73,7 @@
                     resposta.json().then(json => {
                         alert("Login feito com sucesso!!")
 
+                        // espaço temporário no navegador 
                         sessionStorage.EMAIL_USUARIO = json.email_usuario;
                         sessionStorage.NOME_USUARIO = json.nome_usuario;
                         sessionStorage.ID_USUARIO = json.id_usuario;

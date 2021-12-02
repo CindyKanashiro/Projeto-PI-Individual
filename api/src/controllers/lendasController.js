@@ -67,6 +67,7 @@ function deletar(req, res) {
         );
 }
 
+// mostrar a lista
 function mostrar(req, res) {
     lendasModel.mostrar(req.params.id)
         .then(
@@ -86,6 +87,8 @@ function mostrar(req, res) {
 }
 
 function atualizar(req, res) {
+
+    // onde será pego a informação
     var nome = req.body.nome;
     var conteudo = req.body.conteudo;
     var id = req.params.id;
